@@ -1,6 +1,6 @@
 # CSE3310_S2018
 
-All `git commands` can be found at https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+`git commands` can be found at https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
 
 To begin a working local repository:
 
