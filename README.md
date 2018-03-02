@@ -17,6 +17,8 @@
 
 - `git commit -m "<msg>"` to solidify the changes.
 
+- `git pull` to update your branch with the master branch (you will still have your changes).
+
 - `git push origin <branch>` to send the changes to github (never the master branch).
 
 
