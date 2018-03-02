@@ -1,4 +1,3 @@
-# 3310-Group
-Uber Casino
+# CSE3310_S2018
 
-This software runs the dealer program for Uber Casino
+scl enable devtoolset-7 bash
