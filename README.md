@@ -1,6 +1,8 @@
 # CSE3310_S2018
 
-`git commands` can be found at https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+`git commands` can be found at: https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+
+`readme format` found here: https://help.github.com/articles/basic-writing-and-formatting-syntax/
 
 ## To begin a working local repository:
 
