@@ -37,6 +37,8 @@ We will never be working on the master branch to ensure our code's integrity.
 
 - **Delete** a branch with `git branch -D <branchname>`
 
+- To view all branches type `git branch`
+
 ## Useful Commands:
 
 `git status`
