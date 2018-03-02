@@ -28,7 +28,9 @@ List the files you've changed and those you still need to add or commit:
 
 We will never be working on the master branch to ensure our code's integrity.
 
-- **BEFORE CREATING A BRANCH**: Make sure your local repository is updated with the master branch by switching to the master branch and using `git pull`
+- **BEFORE CREATING A BRANCH**: Make sure your local repository is updated with the master branch.
+
+	- switch to the master branch and use `git pull`
 
 - **Create** a new branch by using command `git checkout -b <branchname>`
 
