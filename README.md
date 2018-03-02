@@ -13,11 +13,13 @@
 
 ## To add files you've been working on to github
 
-- Use `git add .` to add all changed files. The period means 'all'.
+1. `git add .` to add all changed files. The period means 'all'.
 
-- `git commit -m "<msg>"` to solidify the changes.
+2. `git commit -m "<msg>"` to solidify the changes.
 
-- `git push origin <branch>` to send the changes to github (never the master branch).
+3. `git pull` to update your branch with the master branch (you will still have your changes).
+
+4. `git push origin <branch>` to send the changes to github (never the master branch).
 
 
 
