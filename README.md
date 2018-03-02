@@ -28,9 +28,9 @@ List the files you've changed and those you still need to add or commit:
 
 We will never be working on the master branch to ensure our code's integrity.
 
-- Create a new branch by using command `git checkout -b <branchname>`
+- **Create** a new branch by using command `git checkout -b <branchname>`
 
-- Switch between branches by using `git checkout <branchname>`
+- **Switch** between branches by using `git checkout <branchname>`
 
-- Delete a branch with `git branch -D <branchname>`
+- **Delete** a branch with `git branch -D <branchname>`
 
