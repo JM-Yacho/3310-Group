@@ -16,7 +16,7 @@ To add files you've been working on, on your local repository:
 
 - Use `git add .` to add all changed files. The period means 'all'.
 
-- `git commit -m "<msg">` to solidify the changes.
+- `git commit -m "<msg>"` to solidify the changes.
 
 - `git push origin <branch>` to send the changes to github (never the master branch).
 
