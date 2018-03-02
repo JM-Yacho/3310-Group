@@ -2,7 +2,7 @@
 
 `git commands` can be found at https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
 
-To begin a working local repository:
+## To begin a working local repository:
 
 1. Clone the repository to a working directory.
 
@@ -11,7 +11,7 @@ To begin a working local repository:
 3. Enter the directory and use `git init`
 
 
-To add files you've been working on, on your local repository:
+## To add files you've been working on to github
 
 - Use `git add .` to add all changed files. The period means 'all'.
 
@@ -20,9 +20,6 @@ To add files you've been working on, on your local repository:
 - `git push origin <branch>` to send the changes to github (never the master branch).
 
 
-List the files you've changed and those you still need to add or commit:
-
-- `git status`
 
 ## Working in branches
 
@@ -38,3 +35,11 @@ We will never be working on the master branch to ensure our code's integrity.
 
 - **Delete** a branch with `git branch -D <branchname>`
 
+## Useful Commands:
+
+`git status`
+
+`git pull` is used to update your current HEAD branch with the latest changes from the remote server. This means that pull not only downloads new data; it also directly integrates it into your current working copy files. This has a couple of consequences:
+
+Since `git pull` tries to merge remote changes with your local ones, a so-called "merge conflict" can occur. Check out our in-depth tutorial on How to deal with merge conflicts for more information.
+Like for many other actions, it's highly recommended to start a "git pull" only with a clean working copy. This means that you should not have any uncommitted local changes before you pull. Use Git's Stash feature to save your local changes temporarily.
