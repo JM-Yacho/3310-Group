@@ -1,7 +1,10 @@
 //player vector or something
 //hand
-/*In UberCasino,, the dealer is not concerned with the wagers or totals of each player.*/
-void intializeHand(UberCasino::PlayerState player){
+//In UberCasino,, the dealer is not concerned with the wagers or totals of each player.
+#include "Player.h"
+
+void intializeHand(UberCasino::PlayerState player){//all cards set to ace and and invalid
+	int i;
 	for(i = 0; i < MAX_CARDS_PER_PLAYER; ++i){
 		(player.cards[i]).card = 0;
 		(player.cards[i]).valid = 0;
@@ -34,12 +37,10 @@ bool canHit(UberCasino::PlayerState player){//returns 0 if CAN*T* hit, returns 1
 		else if(card_value <= 9){++card_Value;}
 	        total+=card_value;
 		}
-	if(total > 21){return 0;}
+	if(total >= 21){return 0;}
 	
-	cards_held = 0;
-	for(i = 0; i < MAX_CARDS_PER_PLAYER; ++i){//returns 0 if player already has 7 cards
-		if(player.cards[i] != NULL){++cards_held;}
-		}
+	cards_held = i;
+
 	if(cards_held = 7){return 0;}
 		
 	return 1;  //retruns 1 if passes both;
