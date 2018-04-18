@@ -22,29 +22,38 @@ struct card_t
    suite_t suite;
 };
 
-class Dealer {
+class MyDealer {
   private:
     int shoe_size;
-    vector<card_t> shoe;                    // create the shoe to play the game
-    vector <int> rand_num_vector;          // vector to compare if random number have been call
+    std::vector<card_t> shoe;                    // create the shoe to play the game
+    std::vector <int> rand_num_vector;          // vector to compare if random number have been call
     bool card_inUse;
     bool check_rand_num();
     void deal_to_dealer ();
+    bool d_turn;
+    bool p_turn;
     void end_game ();
     void gameMode();                       // pick infinity or 8 deck game mode
-    void fillDeck();                       // fill in the deck
+    void fillShoe();                       // fill in the deck
     int randomNumer();                     // get a random number
+    int phand_size;              //how many card a player have
+    int dhand_size;             // how many card a player have
+    int phand_total;
+    int dhand_total;
+    int d_handTotal();                      //count the hands value
 
 
   public:
-  Dealer();                                //initialized data;constructor
-    void dealCard();                       // Deal cards to players and Dealer
+  MyDealer();                                //initialized data;constructor
+    card_t drawCard();                       // Deal cards to players and Dealer
     void hideCard();                       // check to hide healer's second card
     void win();                            // if player or dealer win
     void bust();                           // if player or dealer lose
     void doubleBet();                      // if player or dealer lose
+    void d_play();
+
 };
 #endif
 /*
-email prof to take out card counting, splitting
+email prof to take out card counting, splitting, timmer,
 */
