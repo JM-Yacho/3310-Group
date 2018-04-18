@@ -1,7 +1,7 @@
 //player vector or something
 //hand
 //In UberCasino,, the dealer is not concerned with the wagers or totals of each player.
-#include "Player.h"
+#include "player.h"
 
 void intializeHand_P(PlayerState p){//all cards set to a place holder card that is an ace and and is invalid
 	int i;
