@@ -1,40 +1,40 @@
 #include "dealer.h"
 using namespace std;
 
-void Dealer::gameMode(int x)
+void MyDealer::gameMode(int x)
   {
     if(x == 1)                        //if x = 1 then the game shoe has 8 deck
     {
-      fillDeck(8);                    //create a shoe of 8 deck
+      fillShoe(8);                    //create a shoe of 8 deck
       shoe_size = 8;
       /// send info to player
     }
     else                            // if x = 0 then game mode is infinity
     {
-      fillDeck(1);                 // fcreate a shoe consisting of 1 deck, resure it
+      fillShoe(1);                 // fcreate a shoe consisting of 1 deck, resure it
       shoe_size = 1;
       /// send info to player
     }
   }
 
-void Dealer::dealCard()
+card_t MyDealer::drawCard()
   {
     int i, j;
-    int size = shoeSizeGetter();
-    int p_numOfCard;              //how many card a player have
-    int d_numOfCard;             // how many card a player have
     int card_position = randomNumer();                 // get a random number to get position of card i shoe
     card_inUse = check_rand_num(card_position);
     while(card_inUse == true)               //check if the number has already been used
     {
       card_position = randomNumer();
       card_inUse = check_rand_num(card_position);
-      //if use all card, clear random number vector
+      if((rand_num_vector.size() == shoe.size()) && (shoe_size == 8))                     // check if all the card have been use or not
+      {
+        rand_num_vector.clear();       //clear this vector to reuse card from hoe
+      }
     }
-    card_t temp = shoe(card_position);                //send this card to player
-
+    card_t temp = shoe(card_position);         //send this card to player
+    return temp;
   }
-void Dealer::fillDeck(int shoe_size)
+void MyDealer::fillShoe(int shoe_size)
   {
     int i,j, k;
   ///////////////////////////////
@@ -66,26 +66,56 @@ void Dealer::fillDeck(int shoe_size)
       }
     }
   }
+  void MyDealer::d_play()
+  {
+    card_t dealt_card;
+    if((d_turn == true)&&(p_turn == false))
+    {
+      if(dhand_size == 10)                //if more then 10 card card, end round
+      {
+        d_cardValue(dealt_card);
+        break;
+      }
+      dhand_size++;
+    }
+  }
+int d_cardValue(card_t dealt_card)
+{
 
-void Dealer::hideCard()
+}
+void MyDealer::hideCard()
   {
 
   }
 
-void Dealer::win()
+void MyDealer::win()
   {
 
   }
-void Dealer::bust()
+void MyDealer::bust()
   {
 
   }
-void Dealer::doubleBet()
+void MyDealer::doubleBet()
   {
-
+    //need to double money given out if win
+    // player get card, end turn , move to Dealer
+    card_t dealt_card = drawCard();
+    player::hit_P(PlayerState p, dealt_card);                  //card to give out to player
+    phand_size++;                            //update the amount of card player have
+    p_turn = false;                           // end player turn
+    d_turn = true;                             // switch to dealer turn
+    while((player::total==15) && () )
+    {
+      dealt_card = drawCard();
+      player::hit_D(Game g, dealt_card);
+    }
   }
-
-int Dealer::randomNumer()
+int MyDealer::d_handTotal()
+{
+  player::
+}
+int MyDealer::randomNumer()
   {
     int size = shoeSizeGetter();
     int random_number;
@@ -99,7 +129,7 @@ int Dealer::randomNumer()
     }
     return random_number;
   }
-  bool Dealer::check_rand_num(int num)
+  bool MyDealer::check_rand_num(int num)
   {
     int i;
     for(i = 0; i < rand_num_vector.size(); i++)
