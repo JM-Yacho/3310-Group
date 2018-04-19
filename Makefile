@@ -1,3 +1,5 @@
+
+
 OSPL_LIBS = -lpthread -lddskernel -ldcpssacpp
 LIBS=-L${OSPL_HOME}/lib ${OSPL_LIBS} -lboost_system -lboost_thread
 
@@ -27,18 +29,18 @@ ${IDL_GENERATED}: idl/UberCasino.idl
 
 COMMON_CPP= src/CheckStatus.cpp src/DDSEntityManager.cpp 
 
-COMMON_H= src/io.h src/CheckStatus.h src/DDSEntityManager.h 
+COMMON_H= src/CheckStatus.h src/DDSEntityManager.h 
 
 DEALER_FILES = src/dealer.cpp
 DEALER_H_FILES = src/dealer.h
 
-PLAYER_FILES = src/player.cpp
-PLAYER_H_FILES = src/player.h
+PLAYER_FILES = src/MyPlayer.cpp
+PLAYER_H_FILES = src/MyPlayer.h
 
-Dealer: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/Dealer.cpp ${DEALER_FILES} ${DEALER_H_FILES}  ${COMMON_H} ${COMMON_CPP}
+Dealer: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} ${DEALER_FILES} ${DEALER_H_FILES}  ${COMMON_H} ${COMMON_CPP}
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}
 
-Player: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/Player.cpp ${PLAYER_FILES} ${PLAYER_H_FILES} ${COMMON_H} ${COMMON_CPP}
+Player: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} ${PLAYER_FILES} ${PLAYER_H_FILES} ${COMMON_H} ${COMMON_CPP}
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}
 
 clean:
