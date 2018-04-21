@@ -3,8 +3,8 @@ https://github.com/BudDavis/UberCasino
 
 To build:
 
-% source ./release.bash (be sure to change the OSPL_HOME path)
-% make 
+`% source ./release.bash` (be sure to change the OSPL_HOME path)
+`% make`
 
 There are a couple of cpp defines that control debug
 output:
