@@ -23,8 +23,8 @@
       TopicQos reliable_topic_qos;
       TopicQos setting_topic_qos;
       PublisherQos pub_qos;
-      DataWriterQos dw_qos;
       SubscriberQos sub_qos;
+      DataReaderQos dr_qos;
 
       DomainId_t domain;
       ReturnCode_t status;
@@ -40,12 +40,11 @@
       void createPublisher();
       void deletePublisher();
       void createWriter();
-	  void createWriter(bool autodispose_unregistered_instances);
-	  void deleteWriter();
+      void deleteWriter(DDS::DataWriter_ptr dataWriter);
       void createSubscriber();
       void deleteSubscriber();
       void createReader();
-      void deleteReader();
+      void deleteReader(DDS::DataReader_ptr dataReader);
       DataReader_ptr getReader();
       DataWriter_ptr getWriter();
       Publisher_ptr getPublisher();
