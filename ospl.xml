@@ -16,7 +16,7 @@
     </Domain>
     <DDSI2Service name="ddsi2">
         <General>
-            <NetworkInterfaceAddress>127.0.0.1</NetworkInterfaceAddress>
+            <NetworkInterfaceAddress>AUTO</NetworkInterfaceAddress>
             <AllowMulticast>true</AllowMulticast>
             <EnableMulticastLoopback>true</EnableMulticastLoopback>
             <CoexistWithNativeNetworking>false</CoexistWithNativeNetworking>
