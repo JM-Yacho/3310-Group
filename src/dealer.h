@@ -2,6 +2,7 @@
 #define DEALER_H
 
 #include <string>
+#include <vector>
 
 #include <boost/thread.hpp>
 #include <boost/uuid/uuid.hpp>            // uuid class
@@ -13,9 +14,16 @@
 class dealer
 {
    private:
+      //ADDED to Hand_Value
+      void game_mode(int index);//ADDED THIS
+      int mode; 		//ADDED THIS
+      std::vector <UberCasino::card_t> shoe;//ADDED THIS
+      void reset_shoe(); //ADDED THIS
+      UberCasino::card_t Next_Card ();//ADDED THIS &&& ADDED TO THIS
+      void fill_shoe();
       void new_game ();
       void next_player ();
-      void deal_to_dealer ();
+      void deal_to_dealer (UberCasino::card_t dealt_card);//ADDED TO THIS
       void end_game ();
       // look at the state diagram to understand the states
       enum dealer_state_t {Init,Waiting,WaitingForOthers,StartHand,Deal,EndHand,Done} m_dealer_state;

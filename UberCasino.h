@@ -4,7 +4,7 @@
 //  
 //  File name: UberCasino.h
 //  Source: idl/UberCasino.idl
-//  Generated: Wed Apr 18 19:12:37 2018
+//  Generated: Tue Apr 24 01:56:27 2018
 //  OpenSplice V6.4.140320OSS
 //  
 //******************************************************************
@@ -116,7 +116,8 @@ namespace UberCasino
    {
       waiting_to_join,
       waiting,
-      playing
+      playing,
+      end_hand
    };
 
    struct Dealer

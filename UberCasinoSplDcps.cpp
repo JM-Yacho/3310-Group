@@ -209,7 +209,7 @@ __UberCasino_Game__copyIn(
     (void) base;
 
 #ifdef OSPL_BOUNDS_CHECK
-    if((((c_long)from->gstate) >= 0) && (((c_long)from->gstate) < 3) ){
+    if((((c_long)from->gstate) >= 0) && (((c_long)from->gstate) < 4) ){
         to->gstate = (enum _UberCasino_game_state)from->gstate;
     } else {
         OS_REPORT (OS_ERROR, "copyIn", 0,"Member 'UberCasino::Game.gstate' of type 'game_state' is out of range.");

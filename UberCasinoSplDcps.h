@@ -76,7 +76,8 @@ extern c_metaObject __UberCasino_game_state__load (c_base base);
 enum _UberCasino_game_state {
     _UberCasino_waiting_to_join,
     _UberCasino_waiting,
-    _UberCasino_playing
+    _UberCasino_playing,
+    _UberCasino_end_hand
 };
 
 extern c_metaObject __UberCasino_Dealer__load (c_base base);

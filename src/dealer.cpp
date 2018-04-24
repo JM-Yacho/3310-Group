@@ -18,7 +18,7 @@
 
 
 
-unsigned int Hand_Value ( UberCasino::card_t cards[] )
+unsigned int Hand_Value ( UberCasino::card_t cards[] )//ADDED TO THIS
 {
    // given an array of cards, returns the point value
    unsigned int total=0;
@@ -44,12 +44,35 @@ unsigned int Hand_Value ( UberCasino::card_t cards[] )
          }
       }
    }
+
+   for (unsigned int i=0; i< UberCasino::MAX_CARDS_PER_PLAYER;i++)
+   {
+      if ( cards[i].valid && total <= 11)
+      {
+         switch ( cards[i].card )
+         {
+            case ace: total=total+10;break;
+            case two: break;
+            case three: break;
+            case four: break;
+            case five: break;
+            case six: break;
+            case seven: break;
+            case eight: break;
+            case nine: break;
+            case ten: break;
+            case jack: break;
+            case queen: break;
+            case king: break;
+         }
+      }
+   }
    return total;
 }
 
-UberCasino::card_t Next_Card ()
+UberCasino::card_t dealer::Next_Card ()//ADDED TO THS
 {
-   static int count=0;
+   /*static int count=0;
    static UberCasino::suite_t lut[] = { hearts,diamonds,clubs,spades };
    // this function returns the next card to be dealt
    UberCasino::card_t retval;
@@ -59,6 +82,27 @@ UberCasino::card_t Next_Card ()
      count = 0;
    retval.suite = lut[count];
    retval.valid = true;
+   return retval;*/
+   UberCasino::card_t retval;
+   int random;
+   int valid_cards = 0;
+   bool done = false;
+   
+   for(unsigned int i = 0; i < shoe.size(); ++i){//checks if there is a valid card
+   	if(shoe[i].valid){++valid_cards;}
+   	}
+
+   if(valid_cards == 0){reset_shoe();}//if no valid, reset shoe
+
+   while(!done){//finds random valid card
+   	random = rand() % 416;
+   	done = shoe[random].valid;
+   	}
+
+   retval = shoe[random];//sets return equal to random valid card
+
+   if(mode == 0){shoe[random].valid = false;}//if game NOT infinite changes used card to invalid
+
    return retval;
 }
 
@@ -411,12 +455,50 @@ void dealer::next_player ()
 void dealer::end_game ()
 {
 }
-
-void dealer::deal_to_dealer ()
-{
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void dealer::game_mode(int index){//0 is normal game, 1 is infinite
+if(index == 0){mode = 0;}
+else {mode = 1;}
 }
 
+void dealer::fill_shoe(){//fills the shoe with cards equivalent to 8 decks
+int i,k;
+UberCasino::suite_t suite[] = { hearts,diamonds,clubs,spades };
+UberCasino::card_kind kind[] = {ace,two,three,four,five,six,seven,eight,nine,ten,jack,queen,king};
+for(k = 0; k < 8; ++k){
+	for(i = 0; i < 13; ++i){
+		UberCasino::card_t a = {kind[i],suite[0],true};//correspond to a card of each suite
+		UberCasino::card_t b = {kind[i],suite[1],true};
+		UberCasino::card_t c = {kind[i],suite[2],true};
+		UberCasino::card_t d = {kind[i],suite[3],true};
+		shoe.push_back(a);//add each one to the shoe
+		shoe.push_back(b);
+		shoe.push_back(c);
+		shoe.push_back(d);
+	}
+}
+}
 
+void dealer::deal_to_dealer (UberCasino::card_t dealt_card)
+{
+int i;
+int valid_cards = 0;
+for(i = 0; i < UberCasino::MAX_CARDS_PER_PLAYER; ++i){//finds index of first invalid card
+	if(!(m_G_pub.dealer_cards[i].valid)){break;}
+	if(m_G_pub.dealer_cards[i].valid){++valid_cards;}
+	}
+if(valid_cards < 10){
+	m_G_pub.dealer_cards[i] = dealt_card;//replaces invalid card with card sent to function
+	}
+}
+
+void dealer::reset_shoe(){
+unsigned int i;
+for(i = 0; i < shoe.size(); ++i){
+	shoe[i].valid = true;	
+}
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 void dealer::timer_expired ()
 {
 std::cout << "TIMER EXPIRED" << std::endl;
