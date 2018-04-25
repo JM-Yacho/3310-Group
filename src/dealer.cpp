@@ -18,7 +18,7 @@
 
 
 
-unsigned int Hand_Value ( UberCasino::card_t cards[] )//ADDED TO THIS
+unsigned int Hand_Value ( UberCasino::card_t cards[] )//-------------------------------------ADDED TO THIS-------------------------------
 {
    // given an array of cards, returns the point value
    unsigned int total=0;
@@ -456,12 +456,14 @@ void dealer::end_game ()
 {
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-void dealer::game_mode(int index){//0 is normal game, 1 is infinite
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void dealer::game_mode(int index){//0 is normal game, 1 is infinite        ADDED THIS
 if(index == 0){mode = 0;}
 else {mode = 1;}
 }
 
-void dealer::fill_shoe(){//fills the shoe with cards equivalent to 8 decks
+void dealer::fill_shoe(){//fills the shoe with cards equivalent to 8 decks       ADDED THIS
 int i,k;
 UberCasino::suite_t suite[] = { hearts,diamonds,clubs,spades };
 UberCasino::card_kind kind[] = {ace,two,three,four,five,six,seven,eight,nine,ten,jack,queen,king};
@@ -476,11 +478,10 @@ for(k = 0; k < 8; ++k){
 		shoe.push_back(c);
 		shoe.push_back(d);
 	}
-}
+	}
 }
 
-void dealer::deal_to_dealer (UberCasino::card_t dealt_card)
-{
+void dealer::deal_to_dealer (){ //ADDED TO THIS
 int i;
 int valid_cards = 0;
 for(i = 0; i < UberCasino::MAX_CARDS_PER_PLAYER; ++i){//finds index of first invalid card
@@ -488,17 +489,19 @@ for(i = 0; i < UberCasino::MAX_CARDS_PER_PLAYER; ++i){//finds index of first inv
 	if(m_G_pub.dealer_cards[i].valid){++valid_cards;}
 	}
 if(valid_cards < 10){
-	m_G_pub.dealer_cards[i] = dealt_card;//replaces invalid card with card sent to function
+	m_G_pub.dealer_cards[i] = Next_Card();//replaces invalid card with card sent to function
 	}
 }
 
-void dealer::reset_shoe(){
+void dealer::reset_shoe(){//ADDED THIS
 unsigned int i;
 for(i = 0; i < shoe.size(); ++i){
 	shoe[i].valid = true;	
-}
+	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 void dealer::timer_expired ()
 {
 std::cout << "TIMER EXPIRED" << std::endl;

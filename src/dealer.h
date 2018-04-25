@@ -20,10 +20,10 @@ class dealer
       std::vector <UberCasino::card_t> shoe;//ADDED THIS
       void reset_shoe(); //ADDED THIS
       UberCasino::card_t Next_Card ();//ADDED THIS &&& ADDED TO THIS
-      void fill_shoe();
+      void fill_shoe(); //ADDED THIS
       void new_game ();
       void next_player ();
-      void deal_to_dealer (UberCasino::card_t dealt_card);//ADDED TO THIS
+      void deal_to_dealer ();//ADDED TO THIS
       void end_game ();
       // look at the state diagram to understand the states
       enum dealer_state_t {Init,Waiting,WaitingForOthers,StartHand,Deal,EndHand,Done} m_dealer_state;
