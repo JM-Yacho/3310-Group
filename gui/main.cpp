@@ -7,7 +7,7 @@ int main()
    
     Controller begin;
 
-    begin.start();
+    begin.out();
 
     return 0;
 }

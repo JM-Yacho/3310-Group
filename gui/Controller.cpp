@@ -8,20 +8,26 @@ Fl_Output* action[9];
 Fl_Output* user[9];
 Fl_Output* hand[9];
 Fl_Output* count[9];
+Fl_Light_Button* start;
 Fl_Button* quit;
 
 //----------------------------------------------------
 
-void cb_quit(Fl_Widget* w, void* v) {
-
+void cb_quit(Fl_Widget* w, void* v) 
+{
    win->hide();
 }
 
+void cb_start(Fl_Widget* w, void* v)
+{
+	// ((Fl_Light_Button *)w)->selection_color(FL_GREEN);
+	((Fl_Light_Button *)w)->deactivate();
+}
 //----------------------------------------------------
 
 Controller::Controller(){}
 
-int Controller::start()
+int Controller::out()
 {
 	const int w = 1080;
 	const int h = 480;
@@ -46,6 +52,9 @@ int Controller::start()
 		count[i] = new Fl_Output(75+leftspace, h-130, 50, 30, ""); 
 		leftspace += 150;
 	}
+	start = new Fl_Light_Button(w-280,70,70,30,"Start");
+	start->selection_color(FL_GREEN);
+	start->callback((Fl_Callback *)cb_start, 0);
 	quit = new Fl_Button(w-100, h-50, 70, 30, "Quit");
 	quit->callback((Fl_Callback *)cb_quit, 0);	
     win->end();
