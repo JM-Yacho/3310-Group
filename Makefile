@@ -1,12 +1,12 @@
 
 
 OSPL_LIBS = -lpthread -lddskernel -ldcpssacpp
-LIBS=-L${OSPL_HOME}/lib ${OSPL_LIBS} -lboost_system -lboost_thread
+LIBS=-L${OSPL_HOME}/lib ${OSPL_LIBS} -lboost_system -lboost_thread -L/usr/local/lib -lfltk -lXext -lX11 -lm
 
 CFLAGS = -DDEBUG_PRINT -DDEBUG_STATES -Wall -O0 -g -I. -I./include -I${OSPL_HOME}/include/dcps/C++/SACPP -I${OSPL_HOME}/include/sys
 CXXFLAGS = -std=c++11
 
-all: PitBoss Dealer Player
+all: PitBoss Dealer Player Gui
 
 
 IDL_GENERATED_H= \
@@ -37,6 +37,9 @@ DEALER_H_FILES = src/dealer.h
 PLAYER_FILES = src/player.cpp
 PLAYER_H_FILES = src/player.h
 
+GUI_FILES = gui/Controller.cpp
+GUI_H_FILES = gui/Controller.h
+
 PitBoss: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/PitBoss.cpp
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}
 
@@ -46,7 +49,10 @@ Dealer: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/Dealer.cpp ${DEALER_FILES} $
 Player: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/Player.cpp ${PLAYER_FILES} ${PLAYER_H_FILES} ${COMMON_H} ${COMMON_CPP}
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}
 
+Gui: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} gui/main.cpp ${GUI_FILES} ${GUI_H_FILES} ${COMMON_H} ${COMMON_CPP}
+	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}
+
 clean:
-	-rm -f PitBoss Player Dealer
+	-rm -f PitBoss Player Dealer Gui
 	-rm -f ${IDL_GENERATED_H} ${IDL_GENERATED_CPP}
 	-rm -f ospl-error.log ospl-info.log
