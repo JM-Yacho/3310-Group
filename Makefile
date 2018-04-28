@@ -37,8 +37,8 @@ DEALER_H_FILES = src/dealer.h
 PLAYER_FILES = src/player.cpp
 PLAYER_H_FILES = src/player.h
 
-GUI_FILES = gui/Controller.cpp
-GUI_H_FILES = gui/Controller.h
+GUI_FILES = gui/Controller.cpp gui/Gameroom.cpp
+GUI_H_FILES = gui/Controller.h gui/Gameroom.h
 
 PitBoss: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/PitBoss.cpp
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}

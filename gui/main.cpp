@@ -7,7 +7,7 @@ int main()
    
     Controller begin;
 
-    begin.out();
+    begin.run_main_window();
 
     return 0;
 }

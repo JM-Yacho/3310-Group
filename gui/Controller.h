@@ -2,6 +2,7 @@
 #define CONTROLLER_H
 
 #include <iostream>
+#include <string>
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Input.H>
@@ -12,12 +13,14 @@
 
 #include "../src/io.h"
 
+#include "Gameroom.h"
+
 class Controller
 {
     public:
         Controller();
 
-        int out();
+        int run_main_window();
 
 };
 

@@ -2,63 +2,59 @@
 
 using namespace std;
 
-Fl_Window* win;
+Gameroom show_game_window;
 
-Fl_Output* action[9];
-Fl_Output* user[9];
-Fl_Output* hand[9];
-Fl_Output* count[9];
-Fl_Light_Button* start;
-Fl_Button* quit;
+Fl_Window* main_win;
+Fl_Button* test_room;
+Fl_Button* inf_room;
+Fl_Button* eight_deck_room;
+Fl_Button* main_quit;
 
 //----------------------------------------------------
 
-void cb_quit(Fl_Widget* w, void* v) 
+void cb_test(Fl_Widget* w, void* v) 
 {
-   win->hide();
+   show_game_window.run_game_win("Test Game");
 }
 
-void cb_start(Fl_Widget* w, void* v)
+void cb_inf(Fl_Widget* w, void* v) 
 {
-	// ((Fl_Light_Button *)w)->selection_color(FL_GREEN);
-	((Fl_Light_Button *)w)->deactivate();
+   show_game_window.run_game_win("Infinite Deck Game");
 }
+
+void cb_8deck(Fl_Widget* w, void* v) 
+{
+   show_game_window.run_game_win("8-Deck Game");
+}
+
+void cb_quit(Fl_Widget* w, void* v) 
+{
+   main_win->hide();
+}
+
 //----------------------------------------------------
 
 Controller::Controller(){}
 
-int Controller::out()
+int Controller::run_main_window()
 {
-	const int w = 1080;
+	const int w = 380;
 	const int h = 480;
-	win = new Fl_Window(w,h,"BlackJack");
-	win->color(FL_DARK_CYAN);
-	win->resizable(win);
+	main_win = new Fl_Window(w,h,"UberCasino - Dealer");
+	main_win->color(FL_DARK_CYAN);
+	main_win->resizable(main_win);
 
-	// Dealer Slot
-	user[8] = new Fl_Output(470, 50, 140, 30, "Dealer:");
-	user[8]->value("Group15");
-	hand[8] = new Fl_Output(470, 100, 140, 30, "Hand:");
+	test_room = new Fl_Button(w-130, h-220, 110, 30, "Test Game");
+	test_room->callback((Fl_Callback *)cb_test, 0);	
+	inf_room = new Fl_Button(w-130, h-170, 110, 30, "Infinite Deck");
+	inf_room->callback((Fl_Callback *)cb_inf, 0);	
+	eight_deck_room = new Fl_Button(w-130, h-120, 110, 30, "8-Deck Game");
+	eight_deck_room->callback((Fl_Callback *)cb_8deck, 0);	
+	main_quit = new Fl_Button(w-110, h-50, 70, 30, "Quit");
+	main_quit->callback((Fl_Callback *)cb_quit, 0);	
 
-	// Player Slots
-	int leftspace = 0;
-	for(int i = 0; i < 7; i++)
-	{
-		// bet[i] = new Fl_Output(50+leftspace, 280, 100, 30, "Bet $:"); 
-		// inc[i] = new Fl_Output(50+leftspace, 320, 100, 30, "$:"); 
-		action[i] = new Fl_Output(50+leftspace, h-250, 100, 30, "Action:");
-		user[i] = new Fl_Output(50+leftspace, h-210, 100, 30, "Player:");
-		hand[i] = new Fl_Output(50+leftspace, h-170, 100, 30, "Hand:"); 
-		count[i] = new Fl_Output(75+leftspace, h-130, 50, 30, ""); 
-		leftspace += 150;
-	}
-	start = new Fl_Light_Button(w-280,70,70,30,"Start");
-	start->selection_color(FL_GREEN);
-	start->callback((Fl_Callback *)cb_start, 0);
-	quit = new Fl_Button(w-100, h-50, 70, 30, "Quit");
-	quit->callback((Fl_Callback *)cb_quit, 0);	
-    win->end();
-    win->show();
+    main_win->end();
+    main_win->show();
 
     return Fl::run();
 }
