@@ -7,8 +7,11 @@
 
 
 #include "player.h"
+// #include "../gui/Controller.h"
 
 static player* PTR;
+// Controller run_game;
+
 #include "callback.h" // uses PTR as a global
 
 int main ( int argc, char* argv[] )
@@ -32,11 +35,14 @@ int main ( int argc, char* argv[] )
    memcpy ( P.m_P.uid, &uuid, sizeof ( P.m_P.uid ) );
    P.m_my_uid = uuid;
 
+
    // a buffer to accept input
    char line[100];
    // the main loop
    std::cout << "Enter 'q' to exit" << std::endl;
    std::cout << "-------------------------------------------" << std::endl;
+
+
    while (std::cin.getline(line, 100))
    {
      if (line[0] == 'q' ) break;

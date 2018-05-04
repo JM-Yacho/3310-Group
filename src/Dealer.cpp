@@ -39,6 +39,8 @@ int main ( int argc, char* argv[] )
    std::cout << "-------------------------------------------" << std::endl;
 
    char line[100]; // how large to make it? who knows.
+
+
    while (std::cin.getline(line, sizeof(line)))
    {
      if (line[0] == 'q' ) break;

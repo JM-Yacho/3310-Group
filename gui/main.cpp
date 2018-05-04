@@ -2,12 +2,12 @@
 
 using namespace std;
 
-int main()
+int main( void )
 {
    
     Controller begin;
 
     begin.run_main_window();
 
-    return 0;
+    return Fl::run();
 }
