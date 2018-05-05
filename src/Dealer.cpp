@@ -7,8 +7,10 @@
 #include <boost/uuid/uuid_io.hpp>         // streaming operators etc.
 
 #include "dealer.h"
+#include "../gui/Controller.h"
 
 static dealer* PTR;
+Controller start_menu;
 
 #include "callback.h" // uses the PTR var
 
@@ -38,16 +40,16 @@ int main ( int argc, char* argv[] )
    std::cout << "Enter 'q' to exit" << std::endl;
    std::cout << "-------------------------------------------" << std::endl;
 
-   char line[100]; // how large to make it? who knows.
+   // char line[100]; // how large to make it? who knows.
 
 
-   while (std::cin.getline(line, sizeof(line)))
-   {
-     if (line[0] == 'q' ) break;
-     D.user_input ( std::string (line) );
-   }
+   // while (std::cin.getline(line, sizeof(line)))
+   // {
+   //   if (line[0] == 'q' ) break;
+   //   D.user_input ( std::string (line) );
+   // }
+   start_menu.run_main_window();
 
-
-   return 0;
+   return Fl::run();
 }
 

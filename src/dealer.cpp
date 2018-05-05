@@ -6,6 +6,9 @@
 #include <boost/thread.hpp>
 
 #include "dealer.h"
+#include "../gui/Gameroom.h"
+
+Gameroom gm;
 
 #define TIMER(SECS) \
     if ( m_timer_thread )\
@@ -435,6 +438,17 @@ std::cout << "PLAYER" << std::endl;
    // this is called when data is received
    m_P_sub = P;
    m_Player_recv = true;
+
+
+
+   // gm.add_player(slot,P.name);
+   // Why does this not allow me to access user[0]->value()?
+   // cout << "DEALER.cpp " << gm.user[0] << endl;
+   cout << "DEALER.cpp " << gm.user[0]->value() << endl;
+
+
+
+
    manage_state ();
    unlock ();
 }

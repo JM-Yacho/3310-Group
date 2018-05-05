@@ -23,39 +23,20 @@
 class Gameroom
 {
 
-
 	private:
-	    boost::thread *m_timer_thread;
-        bool m_timer_event;
-		Fl_Output* action[9];
-		Fl_Output* user[9];
-		Fl_Output* hand[9];
-		Fl_Output* count[9];
+		Fl_Output* action[8];
+		Fl_Output* hand[8];
+		Fl_Output* count[8];
 		Fl_Light_Button* start;
 		Fl_Button* quit_game;
 		Fl_Text_Display* game_title;
-		
-
-		dds_io<Player,PlayerSeq,PlayerTypeSupport_var,PlayerTypeSupport,PlayerDataWriter_var,
-		     PlayerDataWriter,PlayerDataReader_var,PlayerDataReader> *p_io;
-		dds_io<Dealer,DealerSeq,DealerTypeSupport_var,DealerTypeSupport,DealerDataWriter_var,
-		     DealerDataWriter,DealerDataReader_var,DealerDataReader> *d_io;
-		dds_io<Game,GameSeq,GameTypeSupport_var,GameTypeSupport,GameDataWriter_var,
-		     GameDataWriter,GameDataReader_var,GameDataReader> *g_io;
 
 	public:
+		Fl_Output* user[8];
 		Gameroom();
 		~Gameroom();
-
-      Player m_P; // stores the last data
-      Dealer m_D; 
-      Game   m_G;
-        void timer_expired ();
-     	void external_data ( Player );
-      	void external_data ( Dealer );
-      	void external_data ( Game G );
+		void add_player(int n, const char* player);
 		void run_game_window(const char*);
-		void cb_add_player(int, const char*);
 
 };
 

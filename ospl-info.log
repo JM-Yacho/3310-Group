@@ -1,0 +1,122 @@
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:01 CDT 2018
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl_sp_ddsi (0)
+              Storage              : 0 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+              SystemId             : 1702156059 from [1,2147483647]
+Node        : ubuntu
+Process     : Dealer <28707>
+Thread      : spliced 7f9fa7c57700
+Internals   : 6.7.170912OSS/1365db1/1365db1/The OpenSplice domain service/u_domain.c/659/0/1525489861.721251136/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:01 CDT 2018
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : ubuntu
+Process     : Dealer <28707>
+Thread      : spliced 7f9fa7c57700
+Internals   : 6.7.170912OSS/1365db1/1365db1/v_serviceChangeState/v_service.c/295/0/1525489861.722822599/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:01 CDT 2018
+Description : SOAP service is reachable via port 37741
+Node        : ubuntu
+Process     : Dealer <28707>
+Thread      : cmsoap 7f9fa23ce700
+Internals   : 6.7.170912OSS/1365db1/1365db1/CM SOAP Service/cms_service.c/445/0/1525489861.729222928/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:01 CDT 2018
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'cmsoap' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : ubuntu
+Process     : Dealer <28707>
+Thread      : cmsoap 7f9fa23ce700
+Internals   : 6.7.170912OSS/1365db1/1365db1/v_serviceChangeState/v_service.c/295/0/1525489861.729460521/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:01 CDT 2018
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : ubuntu
+Process     : Dealer <28707>
+Thread      : ddsi2 7f9fa1fdd700
+Internals   : 6.7.170912OSS/1365db1/1365db1/v_serviceChangeState/v_service.c/295/0/1525489861.757891337/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:05 CDT 2018
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl_sp_ddsi (0)
+              Storage              : 0 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+              SystemId             : 377639024 from [1,2147483647]
+Node        : ubuntu
+Process     : Player <28761>
+Thread      : spliced 7fa5ea84c700
+Internals   : 6.7.170912OSS/1365db1/1365db1/The OpenSplice domain service/u_domain.c/659/0/1525489865.144362683/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:05 CDT 2018
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : ubuntu
+Process     : Player <28761>
+Thread      : spliced 7fa5ea84c700
+Internals   : 6.7.170912OSS/1365db1/1365db1/v_serviceChangeState/v_service.c/295/0/1525489865.154748828/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:05 CDT 2018
+Description : SOAP service is reachable via port 43751
+Node        : ubuntu
+Process     : Player <28761>
+Thread      : cmsoap 7fa5cba6f700
+Internals   : 6.7.170912OSS/1365db1/1365db1/CM SOAP Service/cms_service.c/445/0/1525489865.157692954/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:05 CDT 2018
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'cmsoap' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : ubuntu
+Process     : Player <28761>
+Thread      : cmsoap 7fa5cba6f700
+Internals   : 6.7.170912OSS/1365db1/1365db1/v_serviceChangeState/v_service.c/295/0/1525489865.159331374/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:05 CDT 2018
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : ubuntu
+Process     : Player <28761>
+Thread      : ddsi2 7fa5cb6d3700
+Internals   : 6.7.170912OSS/1365db1/1365db1/v_serviceChangeState/v_service.c/295/0/1525489865.172512147/0
+========================================================================================
+Report      : INFO
+Date        : Fri May 04 22:11:11 CDT 2018
+Description : Termination request (signal 2) received from PID 28761 (self), UID 1000
+Node        : ubuntu
+Process     : Player <28761>
+Thread      : signalHandler 7fa5e86c9700
+Internals   : 6.7.170912OSS/1365db1/1365db1/signalHandlerThread/os_signalHandler.c/583/0/1525489871.677832254/0

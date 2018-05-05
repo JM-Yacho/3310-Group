@@ -1,13 +1,13 @@
-#include "Controller.h"
+// #include "Controller.h"
 
 using namespace std;
 
 int main( void )
 {
    
-    Controller begin;
+    // Controller begin;
 
-    begin.run_main_window();
+    // begin.run_main_window();
 
-    return Fl::run();
+    // return Fl::run();
 }

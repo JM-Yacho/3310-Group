@@ -6,7 +6,7 @@ LIBS=-L${OSPL_HOME}/lib ${OSPL_LIBS} -lboost_system -lboost_thread -L/usr/local/
 CFLAGS = -DDEBUG_PRINT -DDEBUG_STATES -Wall -O0 -g -I. -I./include -I${OSPL_HOME}/include/dcps/C++/SACPP -I${OSPL_HOME}/include/sys
 CXXFLAGS = -std=c++11
 
-all: PitBoss Dealer Player Gui
+all: PitBoss Dealer Player 
 
 
 IDL_GENERATED_H= \
@@ -43,14 +43,14 @@ GUI_H_FILES = gui/Controller.h gui/Gameroom.h
 PitBoss: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/PitBoss.cpp
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}
 
-Dealer: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/Dealer.cpp ${DEALER_FILES} ${DEALER_H_FILES} ${COMMON_H} ${COMMON_CPP}
+Dealer: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/Dealer.cpp ${DEALER_FILES} ${DEALER_H_FILES} ${GUI_FILES} ${GUI_H_FILES}  ${COMMON_H} ${COMMON_CPP}
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}
 
 Player: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} src/Player.cpp ${PLAYER_FILES} ${PLAYER_H_FILES} ${COMMON_H} ${COMMON_CPP}
 	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $^ ${LIBS}
 
-Gui: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} gui/main.cpp ${GUI_FILES} ${GUI_H_FILES} ${COMMON_H} ${COMMON_CPP}
-	g++ -o $@ ${CFLAGS} ${CXXFLAGS} $(fltk-config --use-images) $^ ${LIBS}
+# Gui: ${IDL_GENERATED_H} ${IDL_GENERATED_CPP} gui/main.cpp ${GUI_FILES} ${GUI_H_FILES} ${COMMON_H} ${COMMON_CPP}
+	# g++ -o $@ ${CFLAGS} ${CXXFLAGS} $(fltk-config --use-images) $^ ${LIBS}
 
 clean:
 	-rm -f PitBoss Player Dealer 

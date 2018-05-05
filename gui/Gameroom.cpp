@@ -1,104 +1,32 @@
 #include "Gameroom.h"
-#include <functional>
+#include "../src/dealer.h"
 
 static Gameroom* PTR;
-
-#include "../src/callback.h"
+dealer D;
 
 using namespace std;
 Fl_Window* game_window;
 
-
-#define TIMER(SECS) \
-    if ( m_timer_thread )\
-    {\
-       m_timer_thread->interrupt ();\
-       delete ( m_timer_thread );\
-       m_timer_thread = NULL;\
-    }\
-    m_timer_thread = new boost::thread ( delay_thread , SECS , std::bind ( &Gameroom::timer_expired , this ) );\
-
-
-int slot = 0;
-
-
 //----------------------------------------------------
-void delay_thread ( int seconds, std::function <void(void)> callback)
-{
-  // this routine is created as a posix thread.
-  boost::this_thread::sleep_for(boost::chrono::seconds(seconds));
-  callback ();
-}
 
-
-void lock ()
+void Gameroom::add_player(int slot,const char* player)
 {
-  cout << "****************************************" << endl;
-  // pthread mutex works well
-  // suggest you put it in if needed
-}
-
-void unlock ()
-{
-  // see remarks under lock(), above
-}
-
-void Gameroom::cb_add_player(int slot_num, const char* player)
-{
-	user[slot_num]->value(player);
-}
-
-void cb_quit_game(Fl_Widget* w, void* v) 
-{
-   game_window->hide();
+	user[0]->value("TEST");
+	// cannot access memory at address
 }
 
 void cb_start(Fl_Widget* w, void* v)
 {
+	D.user_input("start");
 	((Fl_Light_Button *)w)->deactivate();
 }
 
-void Gameroom::timer_expired ()
+void cb_quit_game(Fl_Widget* w, void* v) 
 {
-std::cout << "TIMER EXPIRED" << std::endl;
-   // this is called by the timer thread callback when the delay has expired
-   // note: only one timer can be active at a time
-   lock ();
-   m_timer_event = true;
-   unlock ();
+	// try to implement a way to reset dealer back to a 'wait' state for new game when quitting
+   game_window->end();
+   game_window->hide();
 }
-
-
-void Gameroom::external_data (Player P)
-{
-cout << "PLAYER" << endl;
-   lock ();
-   // this is called when data is received
-   // m_P_sub = P;
-   unlock ();
-}
-
-void Gameroom::external_data (Dealer D)
-{
-cout << "DEALER" << D.name << endl;
-   lock ();
-   // this is called when data is received
-   // m_D_sub.name = D.name;
-   m_D = D;
-   unlock ();
-}
-
-void Gameroom::external_data (Game G)
-{
-cout << "GAME" << endl;
-   lock ();
-   // this is called when data is received
-   // m_G_sub = G;
-   unlock ();
-}
-
-
-
 
 
 //----------------------------------------------------
@@ -118,9 +46,9 @@ void  Gameroom::run_game_window(const char* title)
 
 
 	// Create Dealer Slot
-	user[8] = new Fl_Output(470, 50, 140, 30, "Dealer:");
-	user[8]->value("Group15");
-	hand[8] = new Fl_Output(470, 100, 140, 30, "Hand:");
+	user[7] = new Fl_Output(470, 50, 140, 30, "Dealer:");
+	user[7]->value("Group15");
+	hand[7] = new Fl_Output(470, 100, 140, 30, "Hand:");
 
 	// Create Player Slots
 	int leftspace = 0;
@@ -140,30 +68,15 @@ void  Gameroom::run_game_window(const char* title)
 	quit_game = new Fl_Button(w-100, h-50, 70, 30, "Quit");
 	quit_game->callback((Fl_Callback *)cb_quit_game, 0);
 
-    game_window->end();
+    // game_window->end();
     game_window->show();
-
+    // add_player(0,"TEST");
+       cout << "GAMEROOM.cpp " << user[0]->value() << endl;
 }
 
 //----------------------------------------------------
 
-Gameroom::Gameroom()
-{
-   m_timer_thread = NULL;
-   p_io = new dds_io<Player,PlayerSeq,PlayerTypeSupport_var,PlayerTypeSupport,PlayerDataWriter_var,
-                     PlayerDataWriter,PlayerDataReader_var,PlayerDataReader>
-                ( (char*) "player", false, true );
-                       // topic name, publish, subscribe
-
-   d_io = new dds_io<Dealer,DealerSeq,DealerTypeSupport_var,DealerTypeSupport,DealerDataWriter_var,
-                     DealerDataWriter,DealerDataReader_var,DealerDataReader>
-                ( (char*) "dealer", false, true );
-
-   g_io = new dds_io<Game,GameSeq,GameTypeSupport_var,GameTypeSupport,GameDataWriter_var,
-                     GameDataWriter,GameDataReader_var,GameDataReader>
-                ( (char*) "game", false, true );
-       m_timer_event = false;       
-}
+Gameroom::Gameroom(){}
 
 Gameroom::~Gameroom(){}
 
