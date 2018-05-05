@@ -8,8 +8,6 @@
 
 #include "io.h"
 
-
-
 class dealer
 {
    private:

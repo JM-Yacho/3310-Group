@@ -35,7 +35,7 @@ class Gameroom
 		Fl_Output* user[8];
 		Gameroom();
 		~Gameroom();
-		void add_player(int n, const char* player);
+		void add_player( const char* );
 		void run_game_window(const char*);
 
 };

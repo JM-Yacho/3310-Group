@@ -7,11 +7,13 @@ dealer D;
 using namespace std;
 Fl_Window* game_window;
 
+Gameroom gm;
+
 //----------------------------------------------------
 
-void Gameroom::add_player(int slot,const char* player)
+void Gameroom::add_player(const char* player)
 {
-	user[0]->value("TEST");
+	user[0]->value(player);
 	// cannot access memory at address
 }
 
@@ -46,18 +48,18 @@ void  Gameroom::run_game_window(const char* title)
 
 
 	// Create Dealer Slot
-	user[7] = new Fl_Output(470, 50, 140, 30, "Dealer:");
-	user[7]->value("Group15");
-	hand[7] = new Fl_Output(470, 100, 140, 30, "Hand:");
+	gm.user[7] = new Fl_Output(470, 50, 140, 30, "Dealer:");
+	gm.user[7]->value("Group15");
+	gm.hand[7] = new Fl_Output(470, 100, 140, 30, "Hand:");
 
 	// Create Player Slots
 	int leftspace = 0;
 	for(int i = 0; i < 7; i++)
 	{
-		action[i] = new Fl_Output(50+leftspace, h-250, 100, 30, "Action:");
-		user[i] = new Fl_Output(50+leftspace, h-210, 100, 30, "Player:");
-		hand[i] = new Fl_Output(50+leftspace, h-170, 100, 30, "Hand:"); 
-		count[i] = new Fl_Output(75+leftspace, h-130, 50, 30, ""); 
+		gm.action[i] = new Fl_Output(50+leftspace, h-250, 100, 30, "Action:");
+		gm.user[i] = new Fl_Output(50+leftspace, h-210, 100, 30, "Player:");
+		gm.hand[i] = new Fl_Output(50+leftspace, h-170, 100, 30, "Hand:"); 
+		gm.count[i] = new Fl_Output(75+leftspace, h-130, 50, 30, ""); 
 		leftspace += 150;
 	}
 
@@ -68,10 +70,10 @@ void  Gameroom::run_game_window(const char* title)
 	quit_game = new Fl_Button(w-100, h-50, 70, 30, "Quit");
 	quit_game->callback((Fl_Callback *)cb_quit_game, 0);
 
+	gm.user[0]->value("##TEST VAL FROM GAMEROOM.CPP; FIGURE OUT HOW TO INCREMENT SLOT BY 1 INSTEAD OF 2##");
     // game_window->end();
     game_window->show();
     // add_player(0,"TEST");
-       cout << "GAMEROOM.cpp " << user[0]->value() << endl;
 }
 
 //----------------------------------------------------
