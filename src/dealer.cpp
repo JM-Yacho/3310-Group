@@ -439,7 +439,8 @@ std::cout << "PLAYER" << std::endl;
    m_P_sub = P;
    m_Player_recv = true;
 
-   cout << "DEALER.cpp " << gm.user[0]->value() << endl;
+   gm.add_player(P.name);
+   // cout << "DEALER.cpp " << gm.user[0]->value() << endl;
 
    manage_state ();
    unlock ();

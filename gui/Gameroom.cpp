@@ -13,7 +13,7 @@ Gameroom gm;
 
 void Gameroom::add_player(const char* player)
 {
-	user[0]->value(player);
+	gm.user[0]->value(player);
 	// cannot access memory at address
 }
 
@@ -70,7 +70,7 @@ void  Gameroom::run_game_window(const char* title)
 	quit_game = new Fl_Button(w-100, h-50, 70, 30, "Quit");
 	quit_game->callback((Fl_Callback *)cb_quit_game, 0);
 
-	gm.user[0]->value("##TEST VAL FROM GAMEROOM.CPP; FIGURE OUT HOW TO INCREMENT SLOT BY 1 INSTEAD OF 2##");
+	// gm.user[0]->value("##TEST VAL FROM GAMEROOM.CPP; FIGURE OUT HOW TO INCREMENT SLOT BY 1 INSTEAD OF 2##");
     // game_window->end();
     game_window->show();
     // add_player(0,"TEST");
