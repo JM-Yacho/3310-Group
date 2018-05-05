@@ -8,7 +8,7 @@
 #include "dealer.h"
 #include "../gui/Gameroom.h"
 
-extern Gameroom gm;
+Gameroom gm;
 
 #define TIMER(SECS) \
     if ( m_timer_thread )\
