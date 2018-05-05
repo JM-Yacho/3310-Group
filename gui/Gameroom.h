@@ -38,6 +38,6 @@ class Gameroom
 		void add_player(int n, const char* player);
 		void run_game_window(const char*);
 
-};
+}gm;
 
 #endif // GAMEROOM_H
