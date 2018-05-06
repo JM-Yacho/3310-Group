@@ -70,7 +70,7 @@ unsigned int Hand_Value ( UberCasino::card_t cards[] )//------------------------
    return total;
 }
 
-UberCasino::card_t dealer::Next_Card ()//ADDED TO THS
+UberCasino::card_t dealer::Next_Card ()//---------------------------------------------------------ADDED TO THS
 {
    /*static int count=0;
    static UberCasino::suite_t lut[] = { hearts,diamonds,clubs,spades };
@@ -94,7 +94,7 @@ UberCasino::card_t dealer::Next_Card ()//ADDED TO THS
 
    if(valid_cards == 0){reset_shoe();}//if no valid, reset shoe
 
-   while(!done){//finds random valid card
+   while(done == false){//finds random valid card
    	random = rand() % 416;
    	done = shoe[random].valid;
    	}

@@ -14,13 +14,13 @@
 class dealer
 {
    private:
-      //ADDED to Hand_Value
+      /*//ADDED to Hand_Value
       void game_mode(int index);//ADDED THIS
       int mode; 		//ADDED THIS
       std::vector <UberCasino::card_t> shoe;//ADDED THIS
       void reset_shoe(); //ADDED THIS
       UberCasino::card_t Next_Card ();//ADDED THIS &&& ADDED TO THIS
-      void fill_shoe(); //ADDED THIS
+      void fill_shoe(); //ADDED THIS*/
       void new_game ();
       void next_player ();
       void deal_to_dealer ();//ADDED TO THIS
@@ -52,6 +52,16 @@ class dealer
              GameDataWriter,GameDataReader_var,GameDataReader> *g_io;
       // these are class members that store the published / recieved structs
    public:
+
+      //ADDED to Hand_Value
+      void game_mode(int index);//ADDED THIS
+      int mode; 		//ADDED THIS
+      std::vector <UberCasino::card_t> shoe;//ADDED THIS
+      void reset_shoe(); //ADDED THIS
+      UberCasino::card_t Next_Card ();//ADDED THIS &&& ADDED TO THIS
+      void fill_shoe(); //ADDED THIS
+
+
       Player m_P_pub;
       Player m_P_sub;
       Dealer m_D_pub;
